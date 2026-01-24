@@ -1,0 +1,45 @@
+name: Deploy to Azure VM
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Deploy to Azure VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}
+          script: |
+            # Login to DockerHub
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+            
+            # Pull latest image from DockerHub
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/final-python-app:latest
+            
+            # Stop and remove existing container if running
+            docker stop final-python-app || true
+            docker rm final-python-app || true
+            
+            # Run new container
+            docker run -d \
+              --name final-python-app \
+              --restart unless-stopped \
+              -p 80:5000 \
+              ${{ secrets.DOCKERHUB_USERNAME }}/final-python-app:latest
+            
+            # Clean up unused images
+            docker image prune -af
+            
+            # Verify container is running
+            docker ps | grep final-python-app
