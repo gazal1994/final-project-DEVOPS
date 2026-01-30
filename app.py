@@ -9,7 +9,33 @@ from marshmallow import ValidationError
 
 app = Flask(__name__)
 bluePrint = Blueprint('api', __name__, url_prefix='/api')
-api = Api(bluePrint, doc='/doc', title='Sample Flask-RestPlus Application')
+api = Api(
+    bluePrint, 
+    doc='/doc', 
+    title='DevOps Final Project - REST API',
+    version='1.0.0',
+    description='''
+    🚀 Professional REST API for Store and Item Management
+    
+    Built with Flask-RESTPlus and deployed using modern DevOps practices:
+    • Containerized with Docker
+    • CI/CD with GitHub Actions  
+    • Deployed on AWS EC2
+    • Automated deployment pipeline
+    
+    This API provides complete CRUD operations for managing stores and items.
+    ''',
+    contact='Gazal',
+    contact_email='your-email@example.com',
+    license='MIT',
+    authorizations={
+        'apikey': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'X-API-KEY'
+        }
+    }
+)
 app.register_blueprint(bluePrint)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'

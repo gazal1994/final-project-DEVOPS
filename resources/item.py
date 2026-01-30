@@ -7,8 +7,8 @@ from schemas.item import ItemSchema
 ITEM_NOT_FOUND = "Item not found."
 
 
-item_ns = Namespace('item', description='Item related operations')
-items_ns = Namespace('items', description='Items related operations')
+item_ns = Namespace('item', description='🛍️ Single Item Operations - Retrieve, update, and delete individual items')
+items_ns = Namespace('items', description='📦 Items Collection - Manage all items with CRUD operations')
 
 item_schema = ItemSchema()
 item_list_schema = ItemSchema(many=True)

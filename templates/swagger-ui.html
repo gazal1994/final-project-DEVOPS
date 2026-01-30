@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Final Project - REST API</title>
+    <link rel="stylesheet" type="text/css" href="/swaggerui/swagger-ui.css">
+    <style>
+        /* Professional Theme Colors */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --success-color: #059669;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+        }
+
+        /* Custom Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Banner */
+        .banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .banner h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .banner p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem 0.3rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Swagger Container */
+        .swagger-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        /* Swagger UI Customization */
+        .swagger-ui .topbar {
+            display: none;
+        }
+
+        .swagger-ui .info {
+            margin: 2rem 3rem;
+        }
+
+        .swagger-ui .info .title {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .swagger-ui .opblock-tag {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .swagger-ui .opblock.opblock-get {
+            border-color: var(--success-color);
+            background: rgba(5, 150, 105, 0.05);
+        }
+
+        .swagger-ui .opblock.opblock-post {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .swagger-ui .opblock.opblock-put {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .swagger-ui .opblock.opblock-delete {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .swagger-ui .btn.execute {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .swagger-ui .btn.execute:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        .api-footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .api-footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .api-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>🚀 DevOps Final Project - REST API</h1>
+        <p>Professional Flask REST API with Modern DevOps Practices</p>
+        <div>
+            <span class="tech-badge">🐳 Docker</span>
+            <span class="tech-badge">⚙️ GitHub Actions</span>
+            <span class="tech-badge">☁️ AWS EC2</span>
+            <span class="tech-badge">🔄 CI/CD</span>
+        </div>
+    </div>
+
+    <div class="swagger-container">
+        <div id="swagger-ui"></div>
+    </div>
+
+    <div class="api-footer">
+        <p><strong>Powered by Flask-RESTPlus</strong></p>
+        <p>
+            <a href="https://github.com/gazal1994/final-project-DEVOPS" target="_blank">📁 GitHub Repository</a> | 
+            <a href="https://hub.docker.com/r/gazal94/final-python-app" target="_blank">🐳 Docker Hub</a>
+        </p>
+        <p style="opacity: 0.7; margin-top: 1rem;">© 2026 DevOps Project | Deployed on AWS EC2</p>
+    </div>
+
+    <script src="/swaggerui/swagger-ui-bundle.js"></script>
+    <script src="/swaggerui/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            const ui = SwaggerUIBundle({
+                url: "/api/swagger.json",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "BaseLayout",
+                defaultModelsExpandDepth: 1,
+                defaultModelExpandDepth: 1,
+                displayOperationId: false,
+                displayRequestDuration: true,
+                docExpansion: "list",
+                filter: true,
+                showExtensions: true,
+                showCommonExtensions: true,
+                tryItOutEnabled: true
+            });
+
+            window.ui = ui;
+        };
+    </script>
+</body>
+</html>

@@ -7,8 +7,8 @@ from schemas.store import StoreSchema
 STORE_NOT_FOUND = "Store not found."
 STORE_ALREADY_EXISTS = "Store '{}' Already exists."
 
-store_ns = Namespace('store', description='Store related operations')
-stores_ns = Namespace('stores', description='Stores related operations')
+store_ns = Namespace('store', description='🏪 Single Store Operations - Manage individual store details')
+stores_ns = Namespace('stores', description='🏬 Stores Collection - Browse and create stores')
 
 store_schema = StoreSchema()
 store_list_schema = StoreSchema(many=True)
