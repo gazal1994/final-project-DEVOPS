@@ -1,10 +1,11 @@
-name: Deploy to Azure VM
+name: Deploy to Azure VM (Disabled - Using AWS)
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:  # Allow manual trigger
+  # Disabled - using AWS EC2 instead
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:  # Allow manual trigger only
 
 jobs:
   deploy:
