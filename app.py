@@ -15,24 +15,45 @@ api = Api(
     title='DevOps Final Project - REST API',
     version='1.0.0',
     description='''
-    🚀 Professional REST API for Store and Item Management
+    🚀 **Professional REST API for Store and Item Management**
     
-    Built with Flask-RESTPlus and deployed using modern DevOps practices:
-    • Containerized with Docker
-    • CI/CD with GitHub Actions  
-    • Deployed on AWS EC2
-    • Automated deployment pipeline
+    ### Built with Modern DevOps Stack:
     
-    This API provides complete CRUD operations for managing stores and items.
+    | Technology | Purpose |
+    |------------|---------|
+    | 🐳 Docker | Containerization |
+    | ⚙️ GitHub Actions | CI/CD Pipeline |
+    | ☁️ AWS EC2 | Cloud Hosting |
+    | 🔄 Automated Deployment | Zero-downtime updates |
+    
+    ### Features:
+    - ✅ Complete CRUD operations for stores and items
+    - ✅ RESTful API design
+    - ✅ Automated testing and deployment
+    - ✅ Scalable architecture
+    - ✅ Production-ready configuration
+    
+    ### Deployment Info:
+    - **Platform:** AWS EC2 (eu-north-1)
+    - **Container:** Docker
+    - **CI/CD:** GitHub Actions
+    - **Image:** Available on Docker Hub
+    
+    ---
+    
+    **Repository:** [GitHub](https://github.com/gazal1994/final-project-DEVOPS) | 
+    **Docker Hub:** [gazal94/final-python-app](https://hub.docker.com/r/gazal94/final-python-app)
     ''',
-    contact='Gazal',
-    contact_email='your-email@example.com',
-    license='MIT',
+    contact='Gazal - DevOps Engineer',
+    contact_url='https://github.com/gazal1994/final-project-DEVOPS',
+    license='MIT License',
+    license_url='https://opensource.org/licenses/MIT',
     authorizations={
         'apikey': {
             'type': 'apiKey',
             'in': 'header',
-            'name': 'X-API-KEY'
+            'name': 'X-API-KEY',
+            'description': 'API Key for authentication (Future implementation)'
         }
     }
 )
